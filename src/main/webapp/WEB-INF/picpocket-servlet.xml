@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context 
+    	http://www.springframework.org/schema/context/spring-context.xsd 
+    	http://www.springframework.org/schema/mvc 
+   		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="picpocket.controllers" />
+	<mvc:annotation-driven/>
+	
+	<bean id="walletDAO" class="picpocket.DAO.WalletDAO"></bean>
+	<bean id="walletmapper" class="picpocket.DAO.WalletMapper"></bean>
+	
+	<bean id="walletexchangemapper" class="picpocket.DAO.WalletExchangeMapper"></bean>
+	
+	<bean id="photoDAO" class="picpocket.DAO.PhotoDAO"></bean>
+	<bean id="mapper" class="picpocket.DAO.PhotoMapper"></bean>
+	
+	<bean id="albumDAO" class="picpocket.DAO.AlbumDAO"></bean>
+	<bean id="albummapper" class="picpocket.DAO.AlbumMapper"></bean>
+	
+	<bean id="adminDAO" class="picpocket.DAO.AdminDAO"></bean>
+	<bean id="adminMapper" class="picpocket.DAO.AdminMapper"></bean>
+	
+	<bean id="userDAO" class="picpocket.DAO.UserDAO"></bean>
+	<bean id="userMapper" class="picpocket.DAO.UserMapper"></bean>
+	
+	<bean id="reportDAO" class="picpocket.DAO.ReportDAO"></bean>
+	<bean id="reportMapper" class="picpocket.DAO.ReportMapper"></bean>
+
+	<mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**" />
+
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
+	<context:component-scan base-package="com.config" />
+	
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+    <property name="basename" value="message"></property>
+  </bean>
+ <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
